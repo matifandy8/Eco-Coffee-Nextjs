@@ -13,9 +13,7 @@ export default createGlobalStyle`
     height: 100%;
   }
   body {
-    color: ${props => props.theme.colors.white};
     background: ${props => props.theme.colors.background};
-    font: 400 16px Josefin Sans, sans-serif;
     height: 100%;
   }
   h1 {
