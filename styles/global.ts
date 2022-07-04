@@ -18,6 +18,7 @@ export default createGlobalStyle`
   }
   h1 {
     font-family: ${props => props.theme.fontTitle.fontFamily};
+    font-size: 26px;
   }
   p {
     font-family: ${props => props.theme.fontSubtitle.fontFamily};
