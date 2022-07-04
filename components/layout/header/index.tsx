@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { HeaderContainer } from "./header.styles";
+import { HeaderContainer, Logo } from "./header.styles";
 
 const Header: React.FC = () => {
   return (
     <HeaderContainer>
-      <h1>Eco-Coffee</h1>
+      <Logo>Eco-Coffee</Logo>
     </HeaderContainer>
   );
 };
