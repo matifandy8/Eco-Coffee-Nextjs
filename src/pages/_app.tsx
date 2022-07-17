@@ -7,6 +7,7 @@ import { SessionProvider } from "next-auth/react";
 import theme from "../styles/theme";
 import Layout from "../components/layout";
 
+
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <ThemeProvider theme={theme}>
