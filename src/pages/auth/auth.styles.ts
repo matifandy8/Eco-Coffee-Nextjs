@@ -1,16 +1,13 @@
 import styled from "styled-components";
 
-
-
-
 export const Wrapper = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
   width: 100%;
-  a{
-    color:${(props) => props.theme.colors.green};
+  a {
+    color: ${(props) => props.theme.colors.green};
     padding: 5px;
   }
 `;
@@ -25,8 +22,7 @@ export const Form = styled.form`
   position: relative;
 `;
 export const Title = styled.h1`
-text-align: center;
-
+  text-align: center;
 `;
 export const Label = styled.label`
   display: block;

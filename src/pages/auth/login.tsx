@@ -1,21 +1,29 @@
-import { useSession, signIn } from 'next-auth/react';
-import Link from 'next/link';
-import { useState } from 'react';
+import { useSession, signIn } from "next-auth/react";
+import Link from "next/link";
+import { useState } from "react";
 
-import { Wrapper, Input, Form, Button,Label,GoogleAuth,Title } from './auth.styles';
+import {
+  Wrapper,
+  Input,
+  Form,
+  Button,
+  Label,
+  GoogleAuth,
+  Title,
+} from "./auth.styles";
 
 const Login: React.FC = () => {
   const { data: session } = useSession();
   const [dados, setDados] = useState({
     email: "",
-    password: ""
+    password: "",
   });
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log(dados);
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
     setDados(Object.assign(dados, { [name]: value }));
@@ -24,7 +32,7 @@ const Login: React.FC = () => {
     <div>
       <Wrapper>
         <Form onSubmit={handleSubmit}>
-        <Title>Login</Title>
+          <Title>Login</Title>
 
           <Label>Email</Label>
           <Input
@@ -33,7 +41,7 @@ const Login: React.FC = () => {
             value={dados.email}
             onChange={handleChange}
           />
-           <Label>Password</Label>
+          <Label>Password</Label>
           <Input
             type="password"
             name="password"
@@ -41,12 +49,12 @@ const Login: React.FC = () => {
             onChange={handleChange}
           />
           <Link href="/auth/forgot">
-          <a>Forgot your password?</a>
-        </Link>
+            <a>Forgot your password?</a>
+          </Link>
           <Button>Sign in</Button>
           <Link href="/auth/register">
-          <a>Create Account</a>
-        </Link>
+            <a>Create Account</a>
+          </Link>
         </Form>
       </Wrapper>
       <GoogleAuth>

@@ -6,7 +6,7 @@ function protectedpage() {
     </div>
   );
 }
-export async function getServerSideProps(context:any) {
+export async function getServerSideProps(context: any) {
   const session = await getSession(context);
   if (!session) {
     context.res.writeHead(302, { Location: "/user" });
