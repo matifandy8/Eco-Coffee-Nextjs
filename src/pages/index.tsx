@@ -4,7 +4,8 @@ import ProductsScreen from "../components/products";
 import { useSession, signIn, signOut } from "next-auth/react";
 
 
-const Home: NextPage = () => {
+const Home: NextPage = (AllProducts) => {
+  console.log(AllProducts)
   const { data: session } = useSession();
 
   if (session) {
@@ -30,5 +31,18 @@ const Home: NextPage = () => {
     </div>
   );
 };
+
+export async function getStaticProps() {
+  const AllProducts = await fetch(
+    "http://localhost:3000/api/products"
+  ).then(async (res) => {
+    return await res.json();
+  });
+
+  return {
+    props: 
+      AllProducts,
+  };
+}
 
 export default Home;

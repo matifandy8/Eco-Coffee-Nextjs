@@ -13,6 +13,8 @@ const ProductsScreen: React.FC = () => {
             <ProductCard />
             <ProductCard />
             <ProductCard />
+            <ProductCard />
+            <ProductCard />
         </ProductList>
     </div>
   )

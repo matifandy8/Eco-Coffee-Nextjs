@@ -12,6 +12,7 @@ export const ProductList = styled.div`
   grid-gap: 20px;
   align-items: stretch;
   padding: 1rem;
+  padding-bottom: 200px;
 `;
 export const ProductContainer = styled.div`
   display: flex;

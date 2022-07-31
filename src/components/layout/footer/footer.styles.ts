@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
+  margin-top: 90px;
+  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
