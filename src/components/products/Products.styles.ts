@@ -21,9 +21,13 @@ export const ProductContainer = styled.div`
   align-items: center;
 `;
 export const ImgCard = styled.img`
-  width: 300px;
+  max-width: 300px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 10px;
+  border-radius: 25px;
+  :hover{
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 66%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+    }
 `;
 export const NameCard = styled.h1`
   text-decoration: none;
