@@ -18,7 +18,7 @@ console.log(data)
        <Title>Products</Title>
         <ProductList>
        {data?.map((project:any) => (
-          <ProductCard key={project.id} name={project.name} image={project.image}/>
+          <ProductCard key={project.id} name={project.name} image={project.image} price={project.price}/>
         ))}
         </ProductList>
     </div>

@@ -2,7 +2,8 @@
 <br />
 
 <div align="center"><strong>Ecommerse - coffee</strong></div>
-<img href="https://i.ibb.co/cDg5hSp/ecommerse.png"/>
+![ezcv logo](https://i.ibb.co/cDg5hSp/ecommerse.png)
+
 <br />
 </div>
 <div align="center">
