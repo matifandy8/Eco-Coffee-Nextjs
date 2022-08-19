@@ -1,11 +1,17 @@
 import type { NextPage } from "next";
+import dynamic from 'next/dynamic'
 import Head from "next/head";
+import { Suspense } from 'react'
 import ProductsScreen from "../components/products";
 import { useSession, signIn, signOut } from "next-auth/react";
 
 
 const Home: NextPage = () => {
   const { data: session } = useSession();
+
+  const DynamicProducts = dynamic(() => import('../components/products'), {
+    suspense: true,
+  })
 
   if (session) {
     return (
@@ -24,8 +30,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        
-        <ProductsScreen />
+        <Suspense fallback={`Loading...`}>
+          <DynamicProducts />
+        </Suspense>
       </div>
     </div>
   );

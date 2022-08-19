@@ -1,18 +1,13 @@
 import React from 'react'
 import { ProductContainer,ImgCard, ButtonCard, NameCard ,PriceCard,InfoBox} from './Products.styles'
-
-interface IProduct {
-  image: string;
-  name: string;
-  price: number;
-}
+import { IProduct } from './type';
 
 
 
 const ProductCard: React.FC<IProduct> = ({ name, image, price}:IProduct) => {
   return (
     <ProductContainer>
-        <ImgCard src={image} alt="image" />
+        <ImgCard src={image} alt="image"/>
         <InfoBox>
           <NameCard>{name}</NameCard>
         <PriceCard>${price}</PriceCard>
