@@ -1,3 +1,4 @@
+import { useAuth } from '@/context/auth';
 import Link from 'next/link';
 import {
   HeaderContainer,
@@ -9,12 +10,17 @@ import {
 } from './header.styles';
 
 const Header: React.FC = () => {
+  const { getUser, logout } = useAuth();
+  const  name  = getUser();
+  console.log(getUser())
+
   return (
     <HeaderContainer>
       <Logo>
         <Link href="/">
           <a>Eco-Coffee</a>
-        </Link>
+        </Link>    
+        {/* <p>{name}</p> */}
       </Logo>
       <IconsLink>
         <Link href="/auth/login">

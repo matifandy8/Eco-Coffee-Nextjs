@@ -48,9 +48,11 @@ export const Input = styled.input`
   font-size: 1rem;
   line-height: 1.5rem;
   color: gray;
-  :focus,
   :hover {
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.15), 0 1px 5px rgba(0, 0, 0, 0.1);
+  }
+  :focus{
+    border: 2px solid #059669;
   }
 `;
 export const ErrorBox = styled.div`
@@ -67,10 +69,9 @@ export const GoogleAuth = styled.div`
   justify-content: space-around;
 `;
 export const Button = styled.button`
+  cursor:pointer;
   display: flex;
   width: 100%;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   align-items: center;
   justify-content: center;

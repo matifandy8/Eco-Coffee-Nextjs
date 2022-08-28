@@ -23,12 +23,11 @@ type UserSubmitForm = {
   username: string;
   password: string;
   email: string;
-  acceptTerms: boolean;
 };
 
 const Register: React.FC = () => {
   const { data: session } = useSession();
-  const { isLoggedIn, login, logout } = useAuth();
+  const { isLoggedIn, signUp, logout } = useAuth();
   const [wrongPassword, setWrongPassword] = useState(false);
 
 
@@ -60,13 +59,12 @@ const {
 });
 
 const onSubmit = async (dataForm: UserSubmitForm) => {
-  const jwt = await login(dataForm); // jwt sea null o sea distinto de null
+  const jwt = await signUp(dataForm); // jwt sea null o sea distinto de null
   console.log(jwt);
+  console.log(dataForm)
   if (!jwt) return setWrongPassword(true);
   setWrongPassword(false);
-  // navigate('/');
-  console.log(login)
-  
+  // navigate('/');  
 };
 
  
@@ -78,15 +76,13 @@ const onSubmit = async (dataForm: UserSubmitForm) => {
           <Label>First Name</Label>
           <Input
             type="text"
-            name="firstName"
-
+            {...register("username")}
             placeholder="First Name"
           />
           <Label>Last Name</Label>
           <Input
             type="text"
             name="lastName"
-
             placeholder="Last Name"
           />
           <Label>Email</Label>

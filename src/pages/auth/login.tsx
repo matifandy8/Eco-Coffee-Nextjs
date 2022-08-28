@@ -20,10 +20,8 @@ import {
 
 
 type UserSubmitForm = {
-  username: string;
   password: string;
   email: string;
-  acceptTerms: boolean;
 };
 
 const Login: React.FC = () => {
@@ -41,10 +39,6 @@ const validationSchema = Yup.object().shape({
       /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
       "Email is invalid"
     ),
-  username: Yup.string()
-    .required("username is required")
-    .min(6, "username must be at least 6 characters")
-    .max(40, "username must not exceed 40 characters"),
   password: Yup.string()
     .required("Password is required")
     .min(9, "Password must be at least 9 numbers"),

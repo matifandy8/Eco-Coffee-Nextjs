@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 type User = {
-  username: string;
+  email: string;
   password: string;
 };
 
@@ -23,28 +23,42 @@ export const AuthProvider = ({ children }: Props) => {
     return false;
   };
 
-  const login = async ({ username, password }: User) => {
-    console.log(username, password);
-    if (username === "admin1" && password === "admin123456") {
+  const login = async ({ email, password }: User) => {
+    console.log(email, password);
+    if (email && password) {
       localStorage.setItem("auth", "abcdef");
-      localStorage.setItem("user", JSON.stringify({ username }));
-    //   window.location.href = "/";
+      localStorage.setItem("user", JSON.stringify({ email }));
+     window.location.href = "/";
     } else {
       console.log("error");
-      alert("Invalid username or password");
+      alert("Invalid email or password");
+    }
+  };
+  const signUp = async ({ email, password }: User) => {
+    console.log(email, password);
+    // verificar en backend si esta creado si no crearlo al usuario
+    if (email && password) {
+      localStorage.setItem("auth", "abcdef");
+      localStorage.setItem("user", JSON.stringify({ email }));
+     window.location.href = "/";
+    } else {
+      console.log("error");
+      alert("user with this email already created");
     }
   };
 
   const getUser = () => {
-    if (localStorage.getItem("user")) {
+    if(typeof window !== "undefined") {
+     if (localStorage.getItem("user")) {
       const data = localStorage.getItem("user") || '{}';
       const parsedUser = JSON.parse(data);
-      return parsedUser.username;
+      return parsedUser.email;
     }
     return "";
+   }
   };
 
-  return <Provider value={{ logout, login, isLoggedIn,getUser }}>{children}</Provider>;
+  return <Provider value={{ logout, login, isLoggedIn,getUser,signUp }}>{children}</Provider>;
 };
 
 export const useAuth = () => {

@@ -2,7 +2,6 @@ import type { NextPage } from "next";
 import dynamic from 'next/dynamic'
 import Head from "next/head";
 import { Suspense } from 'react'
-import ProductsScreen from "../components/products";
 import { useSession, signIn, signOut } from "next-auth/react";
 
 
