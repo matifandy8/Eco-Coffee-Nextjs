@@ -1,3 +1,4 @@
+import { supabase } from "@/utils/supabaseClient";
 import { createContext, useContext, useEffect, useState } from "react";
 type User = {
   email: string;
@@ -36,15 +37,18 @@ export const AuthProvider = ({ children }: Props) => {
   };
   const signUp = async ({ email, password }: User) => {
     console.log(email, password);
-    // verificar en backend si esta creado si no crearlo al usuario
-    if (email && password) {
-      localStorage.setItem("auth", "abcdef");
-      localStorage.setItem("user", JSON.stringify({ email }));
-     window.location.href = "/";
-    } else {
-      console.log("error");
-      alert("user with this email already created");
-    }
+    const { error } = await supabase.auth.signIn({ email });
+    if (error) throw error;
+    alert("Check your email for the login link!");
+
+    // if (email && password) {
+    //   localStorage.setItem("auth", "abcdef");
+    //   localStorage.setItem("user", JSON.stringify({ email }));
+    //  window.location.href = "/";
+    // } else {
+    //   console.log("error");
+    //   alert("user with this email already created");
+    // }
   };
 
   const getUser = () => {

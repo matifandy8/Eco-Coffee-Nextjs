@@ -1,5 +1,7 @@
 import { useAuth } from '@/context/auth';
+import { supabase } from '@/utils/supabaseClient';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import {
   HeaderContainer,
   Logo,
@@ -11,35 +13,73 @@ import {
 
 const Header: React.FC = () => {
   const { getUser, logout } = useAuth();
-  const  name  = getUser();
+  const name = getUser();
   console.log(getUser())
+  const [session, setSession] = useState<any>(null);
+
+  useEffect(() => {
+    const supabaseSession = supabase.auth.session();
+    console.log("supabaseSession", supabaseSession);
+    setSession(supabaseSession);
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+  }, []);
+
+  const _handleLogOut = () => {
+    supabase.auth.signOut();
+  };
 
   return (
-    <HeaderContainer>
-      <Logo>
-        <Link href="/">
-          <a>Eco-Coffee</a>
-        </Link>    
-        {/* <p>{name}</p> */}
-      </Logo>
-      <IconsLink>
-        <Link href="/auth/login">
-          <a>
+    <>
+      {!session ? (
+        <HeaderContainer>
+          <Logo>
+            <Link href="/">
+              <a>Eco-Coffee</a>
+            </Link>
+            {/* <p>{name}</p> */}
+          </Logo>
+          <IconsLink>
+            <Link href="/auth/login">
+              <a>
+                <ImgIcon
+                  src="https://icon-library.com/images/profile-icon-white/profile-icon-white-3.jpg"
+                  alt="account Icon"
+                />
+              </a>
+            </Link>
+            <Line></Line>
             <ImgIcon
-              src="https://icon-library.com/images/profile-icon-white/profile-icon-white-3.jpg"
-              alt="account Icon"
+              src="https://icon-library.com/images/shopping-cart-icon-white/shopping-cart-icon-white-11.jpg"
+              alt="cart Icon"
             />
-          </a>
-        </Link>
-        <Line></Line>
-        <ImgIcon
-          src="https://icon-library.com/images/shopping-cart-icon-white/shopping-cart-icon-white-11.jpg"
-          alt="cart Icon"
-        />
-        <CartCount>0</CartCount>
-      </IconsLink>
-    </HeaderContainer>
-  );
-};
+            <CartCount>0</CartCount>
+          </IconsLink>
+        </HeaderContainer>
+      ) : (
+        <HeaderContainer>
+          <Logo>
+            <Link href="/">
+              <a>Eco-Coffee</a>
+            </Link>
+          </Logo>
+          <IconsLink>
+            <button onClick={_handleLogOut}>Logout</button>
+            <Line></Line>
+            <ImgIcon
+              src="https://icon-library.com/images/shopping-cart-icon-white/shopping-cart-icon-white-11.jpg"
+              alt="cart Icon"
+            />
+            <CartCount>0</CartCount>
+          </IconsLink>
+        </HeaderContainer>
+      )}
+    </>
+  )
+}
+
+
 
 export default Header;
