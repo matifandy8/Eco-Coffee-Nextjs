@@ -7,7 +7,7 @@ import { IProduct } from './type';
 const ProductCard: React.FC<IProduct> = ({ name, image, price}:IProduct) => {
   return (
     <ProductContainer>
-        <ImgCard src={image} alt="image"/>
+        <ImgCard src={image} alt={name}/>
         <InfoBox>
           <NameCard>{name}</NameCard>
         <PriceCard>${price}</PriceCard>

@@ -1,6 +1,9 @@
 import { useAuth } from "@/context/auth";
+
 import { useSession, signIn } from "next-auth/react";
 import Link from "next/link";
+import Head from "next/head";
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -67,6 +70,9 @@ const onSubmit = async (dataForm: UserSubmitForm) => {
 
   return (
     <div>
+       <Head>
+        <title>Eco-Coffe - Login</title>
+      </Head>
       <Wrapper>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Title>Login</Title>

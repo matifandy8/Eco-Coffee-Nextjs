@@ -13,12 +13,6 @@ export const AuthContext = createContext({} as any);
 const { Provider } = AuthContext;
 
 export const AuthProvider = ({ children }: Props) => {
-  const logout = () => {
-    localStorage.removeItem("auth");
-    localStorage.removeItem("user");
-    window.location.href = "/login";
-  };
-
   const isLoggedIn = () => {
     if (localStorage.getItem("auth")) return true;
     return false;
@@ -26,29 +20,24 @@ export const AuthProvider = ({ children }: Props) => {
 
   const login = async ({ email, password }: User) => {
     console.log(email, password);
-    if (email && password) {
-      localStorage.setItem("auth", "abcdef");
-      localStorage.setItem("user", JSON.stringify({ email }));
-     window.location.href = "/";
-    } else {
-      console.log("error");
-      alert("Invalid email or password");
-    }
+    const { user, session, error } = await supabase.auth.signIn({
+      email,
+      password
+    })
+    error ? console.log(error) : console.log(user);
+    const loginUser = supabase.auth.user();
+    loginUser ? window.location.href = "/" : null;
   };
   const signUp = async ({ email, password }: User) => {
     console.log(email, password);
-    const { error } = await supabase.auth.signIn({ email });
+    const { user, session, error } = await supabase.auth.signUp(
+      {
+        email,
+        password
+      },
+    )
     if (error) throw error;
     alert("Check your email for the login link!");
-
-    // if (email && password) {
-    //   localStorage.setItem("auth", "abcdef");
-    //   localStorage.setItem("user", JSON.stringify({ email }));
-    //  window.location.href = "/";
-    // } else {
-    //   console.log("error");
-    //   alert("user with this email already created");
-    // }
   };
 
   const getUser = () => {
@@ -62,7 +51,7 @@ export const AuthProvider = ({ children }: Props) => {
    }
   };
 
-  return <Provider value={{ logout, login, isLoggedIn,getUser,signUp }}>{children}</Provider>;
+  return <Provider value={{ login, isLoggedIn,getUser,signUp }}>{children}</Provider>;
 };
 
 export const useAuth = () => {
