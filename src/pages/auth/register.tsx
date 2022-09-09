@@ -17,6 +17,7 @@ import {
   ButtonGoogle,
   ErrorBox,
 } from "./auth.styles";
+import Head from "next/head";
 
 
 type UserSubmitForm = {
@@ -70,6 +71,9 @@ const onSubmit = async (dataForm: UserSubmitForm) => {
  
   return (
     <div>
+       <Head>
+        <title>Eco-Coffe - Register</title>
+      </Head>
       <Wrapper>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Title>Register</Title>

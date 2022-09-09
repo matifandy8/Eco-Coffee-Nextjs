@@ -10,7 +10,6 @@ const ProductsScreen: React.FC = () => {
   const fetcher = async (url:any) => await axios.get(url).then((res:any) => res.data);
   const { data, error } = useSWRImmutable(address, fetcher);
 
-console.log(data)
   if (error) <p>Loading failed...</p>;
   if (!data) <h1>Loading...</h1>;
   return (
