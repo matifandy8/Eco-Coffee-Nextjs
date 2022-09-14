@@ -9,7 +9,9 @@ import {
   Line,
   IconsLink,
   CartCount,
+  LogoutBtn,
 } from './header.styles';
+
 
 const Header: React.FC = () => {
   const { getUser, logout } = useAuth();
@@ -66,7 +68,20 @@ const Header: React.FC = () => {
             </Link>
           </Logo>
           <IconsLink>
-            <button onClick={_handleLogOut}>Logout</button>
+          <Link href="/auth/account">
+              <a>
+                <ImgIcon
+                  src="https://icon-library.com/images/profile-icon-white/profile-icon-white-3.jpg"
+                  alt="account Icon"
+                />
+              </a>
+            </Link>
+            <LogoutBtn onClick={_handleLogOut}><ImgIcon
+                  src="https://icon-library.com/images/account-logout-xxl.png"
+                  alt="logout Icon"
+                  width={50}
+                   height={50}
+                /></LogoutBtn>
             <Line></Line>
             <ImgIcon
               src="https://icon-library.com/images/shopping-cart-icon-white/shopping-cart-icon-white-11.jpg"
