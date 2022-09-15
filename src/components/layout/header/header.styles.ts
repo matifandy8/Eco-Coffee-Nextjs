@@ -48,3 +48,9 @@ export const CartCount = styled.div`
  background-color: ${(props) => props.theme.colors.green};
  padding: 5px 10px;
 `;
+
+export const LogoutBtn = styled.button`
+ cursor: pointer;
+background-color: transparent;
+border:none;
+`;

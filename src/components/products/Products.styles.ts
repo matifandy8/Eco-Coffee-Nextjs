@@ -56,4 +56,7 @@ export const ButtonCard = styled.button`
    border: 2px solid black;
   color: ${(props) => props.theme.colors.green};
   font-family: ${(props) => props.theme.fontSubtitle.fontFamily};
+  :hover{
+    background-color: #d2d2d2;
+    }
 `;
