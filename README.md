@@ -1,7 +1,7 @@
 
 <br />
 
-<div align="center"><strong>Ecommerse - coffee</strong></div>
+<div align="center"><strong>Eco-Coffee</strong></div>
 ![ezcv logo](https://i.ibb.co/cDg5hSp/ecommerse.png)
 
 <br />
@@ -17,14 +17,19 @@
 - ⚡️ Next.js 12
 - ⚛️ React 18
 - ⛑ TypeScript
+- Styled components
+- Supabase
 
 
 ### Development
+First run
+
+npm i
 
 To start the project locally, run:
 
 ```bash
-yarn dev
+npm run dev
 ```
 
 Open `http://localhost:3000` with your browser to see the result.
