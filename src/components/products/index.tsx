@@ -1,5 +1,6 @@
 import axios from "axios";
 import useSWRImmutable from "swr";
+import Loader from "../loader";
 
 import ProductCard from './ProductCard'
 import { ProductList, Title } from './Products.styles'
@@ -10,8 +11,8 @@ const ProductsScreen: React.FC = () => {
   const fetcher = async (url:any) => await axios.get(url).then((res:any) => res.data);
   const { data, error } = useSWRImmutable(address, fetcher);
 
-  if (error) <p>Loading failed...</p>;
-  if (!data) <h1>Loading...</h1>;
+  if (error) return <p>Loading failed...</p>;
+  if (!data) return <Loader/>;
   return (
     <div>
        <Title>Products</Title>
