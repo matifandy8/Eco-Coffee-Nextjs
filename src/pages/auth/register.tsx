@@ -28,7 +28,7 @@ type UserSubmitForm = {
 
 const Register: React.FC = () => {
   const { data: session } = useSession();
-  const { isLoggedIn, signUp, logout } = useAuth();
+  const { signUp } = useAuth();
   const [wrongPassword, setWrongPassword] = useState(false);
 
 
@@ -60,12 +60,11 @@ const {
 });
 
 const onSubmit = async (dataForm: UserSubmitForm) => {
-  const jwt = await signUp(dataForm); // jwt sea null o sea distinto de null
+  const jwt = await signUp(dataForm);
   console.log(jwt);
   console.log(dataForm)
   if (!jwt) return setWrongPassword(true);
   setWrongPassword(false);
-  // navigate('/');  
 };
 
  

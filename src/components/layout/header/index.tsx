@@ -1,4 +1,3 @@
-import { useAuth } from '@/context/auth';
 import { supabase } from '@/utils/supabaseClient';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -14,9 +13,6 @@ import {
 
 
 const Header: React.FC = () => {
-  const { getUser, logout } = useAuth();
-  const name = getUser();
-  console.log(getUser())
   const [session, setSession] = useState<any>(null);
 
   useEffect(() => {
@@ -41,7 +37,6 @@ const Header: React.FC = () => {
             <Link href="/">
               <a>Eco-Coffee</a>
             </Link>
-            {/* <p>{name}</p> */}
           </Logo>
           <IconsLink>
             <Link href="/auth/login">
@@ -53,10 +48,14 @@ const Header: React.FC = () => {
               </a>
             </Link>
             <Line></Line>
+            <Link href="/cart">
+              <a>
             <ImgIcon
               src="https://icon-library.com/images/shopping-cart-icon-white/shopping-cart-icon-white-11.jpg"
               alt="cart Icon"
             />
+            </a>
+            </Link>
             <CartCount>0</CartCount>
           </IconsLink>
         </HeaderContainer>
@@ -68,7 +67,7 @@ const Header: React.FC = () => {
             </Link>
           </Logo>
           <IconsLink>
-          <Link href="/auth/account">
+          <Link href="/auth/profile">
               <a>
                 <ImgIcon
                   src="https://icon-library.com/images/profile-icon-white/profile-icon-white-3.jpg"
@@ -83,11 +82,17 @@ const Header: React.FC = () => {
                    height={50}
                 /></LogoutBtn>
             <Line></Line>
+
+            <Link href="/cart">
+              <a>
             <ImgIcon
               src="https://icon-library.com/images/shopping-cart-icon-white/shopping-cart-icon-white-11.jpg"
               alt="cart Icon"
             />
+           </a>
+            </Link>
             <CartCount>0</CartCount>
+
           </IconsLink>
         </HeaderContainer>
       )}

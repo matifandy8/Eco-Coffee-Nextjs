@@ -4,10 +4,10 @@ export const Logo = styled.h1`
   opacity: 1;
   background-color: rgba(16,58,50,1);
   padding: 0.75rem;
-  width: 135px;
+  width: 117px;
   margin-left: 10px;
   border-radius: 0.25rem;
-  font-size: 20px;
+  font-size: 17px;
   a{
       color: white;
       text-decoration: none;
@@ -36,6 +36,7 @@ export const Line = styled.div`
   height: 25px;
   width: 2px;
   margin-top: 10px;
+  margin-left: 5px;
 `;
 
 export const IconsLink = styled.div`

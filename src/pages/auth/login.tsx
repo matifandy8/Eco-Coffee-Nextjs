@@ -1,5 +1,4 @@
 import { useAuth } from "@/context/auth";
-
 import { useSession, signIn } from "next-auth/react";
 import Link from "next/link";
 import Head from "next/head";
@@ -29,10 +28,8 @@ type UserSubmitForm = {
 
 const Login: React.FC = () => {
   const { data: session } = useSession(); 
-  const { isLoggedIn, login, logout } = useAuth();
+  const { login } = useAuth();
   const [wrongPassword, setWrongPassword] = useState(false);
-
-
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -61,9 +58,7 @@ const onSubmit = async (dataForm: UserSubmitForm) => {
   console.log(jwt);
   if (!jwt) return setWrongPassword(true);
   setWrongPassword(false);
-  // navigate('/');
   console.log(login)
-  
 };
 
 

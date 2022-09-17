@@ -1,5 +1,5 @@
 import { supabase } from "@/utils/supabaseClient";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext} from "react";
 type User = {
   email: string;
   password: string;
@@ -13,10 +13,6 @@ export const AuthContext = createContext({} as any);
 const { Provider } = AuthContext;
 
 export const AuthProvider = ({ children }: Props) => {
-  const isLoggedIn = () => {
-    if (localStorage.getItem("auth")) return true;
-    return false;
-  };
 
   const login = async ({ email, password }: User) => {
     console.log(email, password);
@@ -30,7 +26,7 @@ export const AuthProvider = ({ children }: Props) => {
   };
   const signUp = async ({ email, password }: User) => {
     console.log(email, password);
-    const { user, session, error } = await supabase.auth.signUp(
+    const { error } = await supabase.auth.signUp(
       {
         email,
         password
@@ -40,18 +36,7 @@ export const AuthProvider = ({ children }: Props) => {
     alert("Check your email for the login link!");
   };
 
-  const getUser = () => {
-    if(typeof window !== "undefined") {
-     if (localStorage.getItem("user")) {
-      const data = localStorage.getItem("user") || '{}';
-      const parsedUser = JSON.parse(data);
-      return parsedUser.email;
-    }
-    return "";
-   }
-  };
-
-  return <Provider value={{ login, isLoggedIn,getUser,signUp }}>{children}</Provider>;
+  return <Provider value={{ login,signUp }}>{children}</Provider>;
 };
 
 export const useAuth = () => {
