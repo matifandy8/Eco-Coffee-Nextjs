@@ -5,6 +5,11 @@ import { IProduct } from './type';
 
 
 const ProductCard: React.FC<IProduct> = ({ name, image, price}:IProduct) => {
+
+  const handleClick = () => {
+    window.location.href = "/cart";
+  }
+
   return (
     <ProductContainer>
         <ImgCard src={image} alt={name}/>
@@ -12,7 +17,7 @@ const ProductCard: React.FC<IProduct> = ({ name, image, price}:IProduct) => {
           <NameCard>{name}</NameCard>
         <PriceCard>${price}</PriceCard>
         </InfoBox>
-        <ButtonCard > Buy </ButtonCard>
+        <ButtonCard onClick={handleClick}> Add to cart </ButtonCard>
     </ProductContainer>
   )
 }

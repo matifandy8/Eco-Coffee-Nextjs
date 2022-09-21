@@ -30,6 +30,7 @@ const Login: React.FC = () => {
   const { data: session } = useSession(); 
   const { login } = useAuth();
   const [wrongPassword, setWrongPassword] = useState(false);
+  const [loading, setLoading] = useState(false)
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -54,11 +55,9 @@ const {
 });
 
 const onSubmit = async (dataForm: UserSubmitForm) => {
-  const jwt = await login(dataForm); // jwt sea null o sea distinto de null
-  console.log(jwt);
+  const jwt = await login(dataForm); 
   if (!jwt) return setWrongPassword(true);
   setWrongPassword(false);
-  console.log(login)
 };
 
 

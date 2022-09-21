@@ -33,44 +33,42 @@ const Register: React.FC = () => {
 
 
 
-const validationSchema = Yup.object().shape({
-  email: Yup.string()
-    .required("Email is required")
-    .email("Email is invalid")
-    .matches(
-      /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-      "Email is invalid"
-    ),
-  username: Yup.string()
-    .required("username is required")
-    .min(6, "username must be at least 6 characters")
-    .max(40, "username must not exceed 40 characters"),
-  password: Yup.string()
-    .required("Password is required")
-    .min(9, "Password must be at least 9 numbers"),
-});
+  const validationSchema = Yup.object().shape({
+    email: Yup.string()
+      .required("Email is required")
+      .email("Email is invalid")
+      .matches(
+        /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+        "Email is invalid"
+      ),
+    username: Yup.string()
+      .required("username is required")
+      .min(6, "username must be at least 6 characters")
+      .max(40, "username must not exceed 40 characters"),
+    password: Yup.string()
+      .required("Password is required")
+      .min(9, "Password must be at least 9 numbers"),
+  });
 
-const {
-  register,
-  handleSubmit,
-  reset,
-  formState: { errors },
-} = useForm<UserSubmitForm>({
-  resolver: yupResolver(validationSchema),
-});
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<UserSubmitForm>({
+    resolver: yupResolver(validationSchema),
+  });
 
-const onSubmit = async (dataForm: UserSubmitForm) => {
-  const jwt = await signUp(dataForm);
-  console.log(jwt);
-  console.log(dataForm)
-  if (!jwt) return setWrongPassword(true);
-  setWrongPassword(false);
-};
+  const onSubmit = async (dataForm: UserSubmitForm) => {
+    const jwt = await signUp(dataForm);
+    if (!jwt) return setWrongPassword(true);
+    setWrongPassword(false);
+  };
 
- 
+
   return (
     <div>
-       <Head>
+      <Head>
         <title>Eco-Coffe - Register</title>
       </Head>
       <Wrapper>
@@ -95,7 +93,7 @@ const onSubmit = async (dataForm: UserSubmitForm) => {
             className={`form-control ${errors.email ? "is-invalid" : ""}`}
             placeholder="Email"
           />
-           <ErrorBox>{errors.email?.message}</ErrorBox>
+          <ErrorBox>{errors.email?.message}</ErrorBox>
           <Label>Password</Label>
           <Input
             type="password"
@@ -111,7 +109,7 @@ const onSubmit = async (dataForm: UserSubmitForm) => {
         </Form>
       </Wrapper>
       <GoogleAuth>
-      <ButtonGoogle onClick={() => signIn()}>Sign in with your Google </ButtonGoogle>
+        <ButtonGoogle onClick={() => signIn()}>Sign in with your Google </ButtonGoogle>
       </GoogleAuth>
     </div>
   );

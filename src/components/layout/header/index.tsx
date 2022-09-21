@@ -1,5 +1,7 @@
 import { supabase } from '@/utils/supabaseClient';
+
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import {
   HeaderContainer,
@@ -13,11 +15,10 @@ import {
 
 
 const Header: React.FC = () => {
+  const router = useRouter()
   const [session, setSession] = useState<any>(null);
-
   useEffect(() => {
     const supabaseSession = supabase.auth.session();
-    console.log("supabaseSession", supabaseSession);
     setSession(supabaseSession);
 
     supabase.auth.onAuthStateChange((_event, session) => {
@@ -27,7 +28,8 @@ const Header: React.FC = () => {
 
   const _handleLogOut = () => {
     supabase.auth.signOut();
-  };
+    router.push('/')
+    };
 
   return (
     <>

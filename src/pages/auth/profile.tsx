@@ -1,12 +1,9 @@
-import { useAuth } from '@/context/auth';
-import { supabase } from '@/utils/supabaseClient';
 import Head from 'next/head';
-import React from 'react'
+import React, { useEffect } from 'react'
 
 
 
-const Profile: React.FC = ({ data }:any) => {
-  console.log(data)
+const Profile = () => {
 
   return (
     <div>
@@ -17,22 +14,9 @@ const Profile: React.FC = ({ data }:any) => {
     </div>
   )
 }
-export async function getServerSideProps() {
-  const data = supabase.auth.session();
 
-  if (data === null) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: '/auth/login'
-      }
 
-    }
-  } else {
-    return {
-      props: { data }
-    }
-  }
-}
+Profile.requireAuth = true
 
-  export default Profile;
+
+export default Profile;

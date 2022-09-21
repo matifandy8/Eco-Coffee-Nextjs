@@ -1,5 +1,6 @@
 import { supabase } from "@/utils/supabaseClient";
-import { createContext, useContext} from "react";
+import { useRouter } from "next/router";
+import { createContext, useContext, useEffect } from "react";
 type User = {
   email: string;
   password: string;
@@ -13,19 +14,23 @@ export const AuthContext = createContext({} as any);
 const { Provider } = AuthContext;
 
 export const AuthProvider = ({ children }: Props) => {
+  const router = useRouter()
+
+  const isLoggedIn = () => {
+    return supabase.auth.session();
+  };
+
 
   const login = async ({ email, password }: User) => {
-    console.log(email, password);
     const { user, session, error } = await supabase.auth.signIn({
       email,
       password
     })
     error ? console.log(error) : console.log(user);
     const loginUser = supabase.auth.user();
-    loginUser ? window.location.href = "/" : null;
+    loginUser ? router.push('/') : null;
   };
   const signUp = async ({ email, password }: User) => {
-    console.log(email, password);
     const { error } = await supabase.auth.signUp(
       {
         email,
@@ -36,7 +41,7 @@ export const AuthProvider = ({ children }: Props) => {
     alert("Check your email for the login link!");
   };
 
-  return <Provider value={{ login,signUp }}>{children}</Provider>;
+  return <Provider value={{ login, signUp, isLoggedIn }}>{children}</Provider>;
 };
 
 export const useAuth = () => {
