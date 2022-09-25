@@ -3,7 +3,7 @@ import useSWRImmutable from "swr";
 import Loader from "../loader";
 
 import ProductCard from './ProductCard'
-import { ProductList, Title } from './Products.styles'
+import { LoaderBox, ProductList, Title } from './Products.styles'
 
 
 const ProductsScreen: React.FC = () => {
@@ -12,7 +12,7 @@ const ProductsScreen: React.FC = () => {
   const { data, error } = useSWRImmutable(address, fetcher);
 
   if (error) return <p>Loading failed...</p>;
-  if (!data) return <Loader/>;
+  if (!data) return <LoaderBox><Loader/></LoaderBox> ;
   return (
     <div>
        <Title>Products</Title>

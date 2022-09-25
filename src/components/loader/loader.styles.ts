@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const LoaderContainer = styled.div`
+height: 70vh;
+
 text-align: center;
 display: flex;
 flex-direction: column;

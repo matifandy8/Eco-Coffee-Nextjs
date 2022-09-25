@@ -5,6 +5,9 @@ export const Title = styled.h1`
   text-align: center;
   margin:15px;
 `;
+export const LoaderBox = styled.div`
+ height: 75vh;
+`;
 export const ProductList = styled.div`
   text-align: center;
   padding: 0.5rem 1rem;

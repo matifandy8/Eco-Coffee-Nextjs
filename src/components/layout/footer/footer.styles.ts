@@ -4,7 +4,6 @@ export const FooterContainer = styled.footer`
   margin-top: 90px;
   position: absolute;
   bottom: 0;
-  left: 0;
   width: 100%;
   text-align: center;
   background: ${(props) => props.theme.colors.green};

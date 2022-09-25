@@ -10,11 +10,11 @@ export default createGlobalStyle`
     box-sizing:border-box
   }
   html {
-    height: 100%;
   }
   body {
+    min-height:100vh;
     background: ${props => props.theme.colors.background};
-    height: 100%;
+    position: relative; 
   }
   h1 {
     font-family: ${props => props.theme.fontTitle.fontFamily};
@@ -24,6 +24,5 @@ export default createGlobalStyle`
     font-family: ${props => props.theme.fontSubtitle.fontFamily};
   }
   #__next {
-  height: 100%;
   }
 `
