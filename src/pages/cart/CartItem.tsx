@@ -1,27 +1,27 @@
 import { IProduct } from '@/components/products/type';
 import React from 'react'
-import { ProductContainer, ImgCard, NameCard, PriceCard, InfoBox, Increment, Decrement, Qty ,QtyBox,Remove} from './cart.styles'
+import { ProductContainer, ImgCard, NameCard, PriceCard, InfoBox, Increment, Decrement, Qty ,QtyBox,Remove, InfoItem} from './cart.styles'
 
 
 
 const CartItem: React.FC<IProduct> = ({ name, image, price }: IProduct) => {
 
   return (
-    <ProductContainer>
+    <ProductContainer>    
+        <ImgCard src={image} alt={name} />
+
       <InfoBox>
-      <ImgCard src={image} alt={name} />
-        <div>        
+        <InfoItem>        
           <NameCard>{name}</NameCard>
           <PriceCard>${price}</PriceCard>
-          <Remove> Remove </Remove>
-        </div>
-        
+        </InfoItem>
+        <Remove> Remove </Remove>
       </InfoBox>
-      <QtyBox>
+      {/* <QtyBox>
         <Decrement> - </Decrement>
         <Qty>0</Qty>
         <Increment> + </Increment>
-      </QtyBox>
+      </QtyBox> */}
     </ProductContainer>
   )
 }
