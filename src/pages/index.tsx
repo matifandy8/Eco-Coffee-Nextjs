@@ -7,16 +7,16 @@ import Products from "@/components/products";
 const Home: NextPage = () => {
   const { data: session } = useSession();
 
-
-  if (session) {
-    return (
-      <div>
-        Welcome user
-        <br />
-        <button onClick={() => signOut()}>Sign out</button>
-      </div>
-    );
-  }
+   // check this
+  // if (session) {
+  //   return (
+  //     <div>
+  //       Welcome user
+  //       <br />
+  //       <button onClick={() => signOut()}>Sign out</button>
+  //     </div>
+  //   );
+  // }
   return (
     <div>
       <Head>

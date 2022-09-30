@@ -4,7 +4,7 @@ import { ProductContainer, ImgCard, NameCard, PriceCard, InfoBox, Increment, Dec
 
 
 
-const CartItem: React.FC<IProduct> = ({ name, image, price }: IProduct) => {
+const CartItem: React.FC<IProduct> = ({ name, image, price, quantity }: IProduct) => {
 
   return (
     <ProductContainer>    
@@ -14,6 +14,7 @@ const CartItem: React.FC<IProduct> = ({ name, image, price }: IProduct) => {
         <InfoItem>        
           <NameCard>{name}</NameCard>
           <PriceCard>${price}</PriceCard>
+          <div>{quantity}</div>
         </InfoItem>
         <Remove> Remove </Remove>
       </InfoBox>

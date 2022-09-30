@@ -9,6 +9,8 @@ import Layout from "../components/layout";
 import { AuthProvider } from "@/context/auth";
 import { NextPage } from "next";
 import { AuthGuard } from "@/components/authGuard";
+import { Provider } from "react-redux";
+import store from "@/redux/store";
 
 export type NextApplicationPage<P = any, IP = P> = NextPage<P, IP> & {
   requireAuth?: boolean
@@ -22,6 +24,7 @@ const MyApp: React.FC<AppProps> = (props: AppProps) => {
   }: { Component: NextApplicationPage; pageProps: any } = props
   return (
     <ThemeProvider theme={theme}>
+      <Provider store={store}>
       <AuthProvider>
         <SessionProvider
           session={pageProps.session}
@@ -39,6 +42,7 @@ const MyApp: React.FC<AppProps> = (props: AppProps) => {
           </Layout>
         </SessionProvider>
       </AuthProvider>
+      </Provider>
       <GlobalStyle />
     </ThemeProvider>
   );

@@ -1,8 +1,10 @@
+import { cartTotalSelector } from '@/redux/selectors';
 import { supabase } from '@/utils/supabaseClient';
 
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   HeaderContainer,
   Logo,
@@ -17,6 +19,19 @@ import {
 const Header: React.FC = () => {
   const router = useRouter()
   const [session, setSession] = useState<any>(null);
+  const total = useSelector(cartTotalSelector);
+  const [change, setChange] = useState(false);
+
+  useEffect(() => {
+    if (total !== 0) {
+      setChange(true);
+
+      setTimeout(() => {
+        setChange(false);
+      }, 1000);
+    }
+  }, [total]);
+  
   useEffect(() => {
     const supabaseSession = supabase.auth.session();
     setSession(supabaseSession);
@@ -58,7 +73,7 @@ const Header: React.FC = () => {
             />
             </a>
             </Link>
-            <CartCount>0</CartCount>
+            <CartCount change={change}>{total}</CartCount>
           </IconsLink>
         </HeaderContainer>
       ) : (

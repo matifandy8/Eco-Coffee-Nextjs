@@ -4,6 +4,7 @@ import Loader from "../loader";
 
 import ProductCard from './ProductCard'
 import { LoaderBox, ProductList, Title } from './Products.styles'
+import { IProduct } from "./type";
 
 
 const ProductsScreen: React.FC = () => {
@@ -17,8 +18,8 @@ const ProductsScreen: React.FC = () => {
     <div>
        <Title>Products</Title>
         <ProductList>
-       {data?.map((project:any) => (
-          <ProductCard key={project.id} name={project.name} image={project.image} price={project.price}/>
+       {data?.map((product:IProduct) => (
+          <ProductCard key={product.id} productItem={product}/>
         ))}
         </ProductList>
     </div>

@@ -29,7 +29,7 @@ export const CheckoutButton = styled.button`
     display: flex;
     cursor: pointer;
     margin-top:50px;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
