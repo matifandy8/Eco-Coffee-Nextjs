@@ -14,23 +14,16 @@ import {
   CartCount,
   LogoutBtn,
 } from './header.styles';
+import { useSession , signOut } from "next-auth/react";
+
 
 
 const Header: React.FC = () => {
   const router = useRouter()
   const [session, setSession] = useState<any>(null);
-  const total = useSelector(cartTotalSelector);
-  const [change, setChange] = useState(false);
+  const total:number = useSelector(cartTotalSelector);
+  const { data: sessionNext } = useSession();
 
-  useEffect(() => {
-    if (total !== 0) {
-      setChange(true);
-
-      setTimeout(() => {
-        setChange(false);
-      }, 1000);
-    }
-  }, [total]);
   
   useEffect(() => {
     const supabaseSession = supabase.auth.session();
@@ -43,12 +36,13 @@ const Header: React.FC = () => {
 
   const _handleLogOut = () => {
     supabase.auth.signOut();
+    signOut();
     router.push('/')
     };
 
   return (
     <>
-      {!session ? (
+      {!session && !sessionNext ? (
         <HeaderContainer>
           <Logo>
             <Link href="/">
@@ -73,7 +67,9 @@ const Header: React.FC = () => {
             />
             </a>
             </Link>
-            <CartCount change={change}>{total}</CartCount>
+            <Link href="/cart">
+            <CartCount>{total}</CartCount>
+            </Link>
           </IconsLink>
         </HeaderContainer>
       ) : (
@@ -85,14 +81,14 @@ const Header: React.FC = () => {
           </Logo>
           <IconsLink>
           <Link href="/auth/profile">
-              <a>
+              <a title="Profile">
                 <ImgIcon
                   src="https://icon-library.com/images/profile-icon-white/profile-icon-white-3.jpg"
                   alt="account Icon"
                 />
               </a>
             </Link>
-            <LogoutBtn onClick={_handleLogOut}><ImgIcon
+            <LogoutBtn title="Logout" onClick={_handleLogOut}><ImgIcon
                   src="https://icon-library.com/images/account-logout-xxl.png"
                   alt="logout Icon"
                   width={50}
@@ -101,7 +97,7 @@ const Header: React.FC = () => {
             <Line></Line>
 
             <Link href="/cart">
-              <a>
+              <a title="Cart">
             <ImgIcon
               src="https://icon-library.com/images/shopping-cart-icon-white/shopping-cart-icon-white-11.jpg"
               alt="cart Icon"
