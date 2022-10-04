@@ -1,5 +1,5 @@
 import { useAuth } from "@/context/auth";
-import { useSession, signIn } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import Head from "next/head";
 
@@ -27,7 +27,6 @@ type UserSubmitForm = {
 };
 
 const Login: React.FC = () => {
-  const { data: session } = useSession(); 
   const { login } = useAuth();
   const [wrongPassword, setWrongPassword] = useState(false);
   const [loading, setLoading] = useState(false)
@@ -55,8 +54,10 @@ const {
 });
 
 const onSubmit = async (dataForm: UserSubmitForm) => {
-  const jwt = await login(dataForm); 
-  if (!jwt) return setWrongPassword(true);
+  setLoading(true)
+  const response= await login(dataForm); 
+  setLoading(false)
+  if (!response) return setWrongPassword(true);
   setWrongPassword(false);
 };
 
@@ -79,6 +80,8 @@ const onSubmit = async (dataForm: UserSubmitForm) => {
             className={`form-control ${errors.email ? "is-invalid" : ""}`}
           />
           <ErrorBox>{errors.email?.message}</ErrorBox>
+          <ErrorBox>{wrongPassword}</ErrorBox>
+
           <Label>Password</Label>
           <Input
             type="password"
@@ -90,7 +93,10 @@ const onSubmit = async (dataForm: UserSubmitForm) => {
           <Link href="/auth/forgot">
             <a>Forgot your password?</a>
           </Link>
-          <Button type="submit" >Sign in</Button>
+          <Button type="submit" >
+          {loading && <span>Loading...</span>}
+          {!loading && <span>Sign in</span>}
+          </Button>
           <Link href="/auth/register">
             <a>Create Account</a>
           </Link>

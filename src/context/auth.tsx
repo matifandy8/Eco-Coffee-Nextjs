@@ -19,6 +19,7 @@ export const AuthProvider = ({ children }: Props) => {
   const isLoggedIn = () => {
     return supabase.auth.session();
   };
+  
 
 
   const login = async ({ email, password }: User) => {
@@ -26,7 +27,7 @@ export const AuthProvider = ({ children }: Props) => {
       email,
       password
     })
-    error ? console.log(error) : console.log(user);
+    error ? alert(error.message) : console.log(user);
     const loginUser = supabase.auth.user();
     loginUser ? router.push('/') : null;
   };

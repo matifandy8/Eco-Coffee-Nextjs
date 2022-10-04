@@ -8,8 +8,8 @@ import CartItem from './CartItem';
 
 
 const Cart: React.FC = () => {
-    const cart = useSelector((state:any) => state.cart)
-    const totalPrice:number = useSelector(cartTotalPriceSelector);
+    const cart = useSelector((state: any) => state.cart)
+    const totalPrice: number = useSelector(cartTotalPriceSelector);
 
 
     return (
@@ -19,17 +19,19 @@ const Cart: React.FC = () => {
             </Head>
             <CartContainer>
                 <Title>Your Cart</Title>
-                {/* <p>Your cart is empty</p> */}
-                {cart?.map((item: any) => (
-                    <CartItem
-                        key={item.id}
-                        id={item.id}
-                        image={item.image}
-                        name={item.name}
-                        price={item.price}
-                       quantity={item.quantity}
-                    />
-                ))}
+                {cart.length === 0
+                    ? <p>Your cart is empty</p>
+                    : cart?.map((item: any) => (
+                        <CartItem
+                            key={item.id}
+                            id={item.id}
+                            image={item.image}
+                            name={item.name}
+                            price={item.price}
+                            quantity={item.quantity}
+                        />
+                    ))
+                }
                 <SubTotal>
                     <SubTotalTitle>SubTotal</SubTotalTitle>
                     <SubTotalPrice>{totalPrice > 0 && <div>${totalPrice}</div>}</SubTotalPrice>

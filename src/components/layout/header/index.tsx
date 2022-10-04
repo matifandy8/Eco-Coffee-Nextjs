@@ -23,7 +23,7 @@ const Header: React.FC = () => {
   const [session, setSession] = useState<any>(null);
   const total:number = useSelector(cartTotalSelector);
   const { data: sessionNext } = useSession();
-
+  
   
   useEffect(() => {
     const supabaseSession = supabase.auth.session();
@@ -104,7 +104,7 @@ const Header: React.FC = () => {
             />
            </a>
             </Link>
-            <CartCount>0</CartCount>
+            <CartCount>{total}</CartCount>
 
           </IconsLink>
         </HeaderContainer>
