@@ -15,6 +15,7 @@ import {
   LogoutBtn,
 } from './header.styles';
 import { useSession , signOut } from "next-auth/react";
+import { deleteCookie } from 'cookies-next';
 
 
 
@@ -38,6 +39,7 @@ const Header: React.FC = () => {
     supabase.auth.signOut();
     signOut();
     router.push('/')
+    deleteCookie('autenticated');
     };
 
   return (

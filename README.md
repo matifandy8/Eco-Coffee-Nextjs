@@ -2,7 +2,9 @@
 <br />
 
 <div align="center"><strong>Eco-Coffee</strong></div>
-![ezcv logo](https://i.ibb.co/cDg5hSp/ecommerse.png)
+## Screenshots
+
+![Next Ecommerce screenshot](https://i.ibb.co/cDg5hSp/ecommerse.png)
 
 <br />
 </div>
@@ -20,6 +22,12 @@
 - Styled components
 - Supabase
 
+## Available pages
+
+- Home page: /
+- Cart page: /cart
+- Login page: /login
+- Register page: /register
 
 ### Development
 First run

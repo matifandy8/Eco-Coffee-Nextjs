@@ -1,4 +1,5 @@
 import { supabase } from "@/utils/supabaseClient";
+import { setCookie } from "cookies-next";
 import { useRouter } from "next/router";
 import { createContext, useContext, useEffect } from "react";
 type User = {
@@ -30,6 +31,7 @@ export const AuthProvider = ({ children }: Props) => {
     error ? alert(error.message) : console.log(user);
     const loginUser = supabase.auth.user();
     loginUser ? router.push('/') : null;
+    setCookie('autenticated', 'autenticated');
   };
   const signUp = async ({ email, password }: User) => {
     const { error } = await supabase.auth.signUp(

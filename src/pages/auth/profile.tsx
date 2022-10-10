@@ -1,27 +1,37 @@
-import { supabase } from '@/utils/supabaseClient';
-import { useSession } from 'next-auth/react';
+import { getCookie } from 'cookies-next';
 import Head from 'next/head';
 import React from 'react'
 
 
 
 const Profile = () => {
-  const { data: sessionNext } = useSession();
-  const userEmail = supabase.auth.user()?.email
-
-
   return (
     <div>
       <Head>
         <title>Eco-Coffe - Profile</title>
       </Head>
       <div>
-        <h1>profile page</h1>
-      <h2>name: {sessionNext?.user?.name}</h2>
-      <h2>Email: {userEmail}</h2>
+        <h1>Profile</h1>
+        <p>You haven't placed any orders yet.</p>
       </div>
     </div>
   )
+}
+
+export function getServerSideProps({ req, res }) {
+  const tokendata = getCookie('autenticated', { req, res });
+  const sessionGoogle = getCookie('next-auth.session-token', { req, res });
+  
+  
+  if (!tokendata && !sessionGoogle) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
+  return { props: { token: tokendata || "" } };
 }
 
 

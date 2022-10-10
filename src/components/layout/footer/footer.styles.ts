@@ -8,7 +8,7 @@ export const FooterContainer = styled.footer`
   text-align: center;
   background: ${(props) => props.theme.colors.green};
   border-top: 1px solid hsla(0, 0%, 100%, 0.1);
-  padding: 2.5rem 0rem;
+  padding: 1.2rem 0rem;
   color: ${(props) => props.theme.colors.gray};
   font-family: ${(props) => props.theme.fontSubtitle.fontFamily};
 `;
