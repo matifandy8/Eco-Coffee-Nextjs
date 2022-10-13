@@ -21,8 +21,9 @@ const Profile = () => {
 export function getServerSideProps({ req, res }) {
   const tokendata = getCookie('autenticated', { req, res });
   const sessionGoogle = getCookie('next-auth.session-token', { req, res });
-  
-  
+
+
+
   if (!tokendata && !sessionGoogle) {
     return {
       redirect: {

@@ -120,6 +120,8 @@ export const Decrement = styled.button`
    background-color: #059669;
    color: white;
    border: none;
+   opacity: ${(p) => (p.disabled ? 0.4 : 1)};
+  pointer-events: ${(p) => (p.disabled ? "none" : "unset")};
 `;
 
 

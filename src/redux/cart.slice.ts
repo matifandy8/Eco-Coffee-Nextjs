@@ -27,6 +27,10 @@ const cartSlice = createSlice({
         });
       }
     },
+    deleteCart(state, { payload }) {
+      const { id } = payload;      
+        return state.filter((item) => item.id !== id);   
+    },
     increament(state, { payload }) {
       return state.map((item) =>
         item.id === payload
@@ -53,7 +57,7 @@ const cartSlice = createSlice({
   }
 });
 
-export const { addToCart, increament, decrement, clear } = cartSlice.actions;
+export const { addToCart, increament, decrement, clear,deleteCart } = cartSlice.actions;
 const cartReducer = cartSlice.reducer;
 
 export default cartReducer;

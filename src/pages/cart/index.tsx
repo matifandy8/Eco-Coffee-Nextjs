@@ -24,11 +24,7 @@ const Cart: React.FC = () => {
                     : cart?.map((item: any) => (
                         <CartItem
                             key={item.id}
-                            id={item.id}
-                            image={item.image}
-                            name={item.name}
-                            price={item.price}
-                            quantity={item.quantity}
+                            productItem={item}
                         />
                     ))
                 }
