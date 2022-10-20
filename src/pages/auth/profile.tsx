@@ -19,7 +19,7 @@ const Profile = () => {
   )
 }
 
-export function getServerSideProps: GetServerSideProps(req: NextApiRequest, res: NextApiResponse) {
+export function getServerSideProps(req: NextApiRequest, res: NextApiResponse) {
   const tokendata = getCookie('autenticated', { req, res });
   const sessionGoogle = getCookie('next-auth.session-token', { req, res });
 
