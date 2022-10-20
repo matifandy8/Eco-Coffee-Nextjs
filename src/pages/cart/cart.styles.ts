@@ -86,6 +86,9 @@ export const InfoItem = styled.div`
   flex-direction:row;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 400px) {
+    flex-direction: column;
+  }
 `;
 
 export const Remove = styled.button`
