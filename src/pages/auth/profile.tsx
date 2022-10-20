@@ -1,6 +1,6 @@
 import { getCookie } from 'cookies-next';
 import Head from 'next/head';
-import { GetServerSideProps, NextApiRequest, NextApiResponse } from 'next/types';
+import { NextApiRequest, NextApiResponse } from 'next/types';
 import React from 'react'
 
 

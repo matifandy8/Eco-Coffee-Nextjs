@@ -1,4 +1,3 @@
-import { IProduct } from '@/components/products/type';
 import { decrement, deleteCart, increament } from '@/redux/cart.slice';
 import React from 'react'
 import { useDispatch } from 'react-redux';

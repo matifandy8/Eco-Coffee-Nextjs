@@ -4,7 +4,7 @@ import { postRequest } from '@/utils/postRequest';
 import { supabase } from '@/utils/supabaseClient';
 import { useSession } from 'next-auth/react';
 import Head from 'next/head';
-import React, { MouseEventHandler, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 
 import { CartContainer, Title, SubTotal, SubTotalTitle, SubTotalPrice, CheckoutButton } from "./cart.styles"
