@@ -8,7 +8,7 @@ import { IProduct } from "./type";
 
 
 const ProductsScreen: React.FC = () => {
-  const address = `http://localhost:3000/api/products`;
+  const address = 'api/products';
   const fetcher = async (url:any) => await axios.get(url).then((res:any) => res.data);
   const { data, error } = useSWRImmutable(address, fetcher);
 
