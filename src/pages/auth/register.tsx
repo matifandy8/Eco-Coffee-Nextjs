@@ -16,7 +16,7 @@ import {
   Title,
   ButtonGoogle,
   ErrorBox,
-} from "./auth.styles";
+} from "../../styles/auth.styles";
 import Head from "next/head";
 
 

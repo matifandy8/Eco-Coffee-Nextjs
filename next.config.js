@@ -3,5 +3,6 @@ module.exports = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  pageExtensions: ['mdx', 'md', 'jsx', 'js', 'tsx', 'ts'],
 };
 

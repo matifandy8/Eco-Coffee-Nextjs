@@ -7,8 +7,8 @@ import Head from 'next/head';
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 
-import { CartContainer, Title, SubTotal, SubTotalTitle, SubTotalPrice, CheckoutButton } from "./cart.styles"
-import CartItem from './CartItem';
+import { CartContainer, Title, SubTotal, SubTotalTitle, SubTotalPrice, CheckoutButton } from "../../redux/cart.styles"
+import CartItem from '../../components/CartItem';
 
 const mItem = {
     name: 'Nike Airforce 1',

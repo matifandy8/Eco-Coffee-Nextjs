@@ -1,7 +1,7 @@
 import { decrement, deleteCart, increament } from '@/redux/cart.slice';
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { ProductContainer, ImgCard, NameCard, PriceCard, InfoBox, Increment, Decrement, Qty, QtyBox, Remove, InfoItem } from './cart.styles'
+import { ProductContainer, ImgCard, NameCard, PriceCard, InfoBox, Increment, Decrement, Qty, QtyBox, Remove, InfoItem } from '../redux/cart.styles'
 
 
 

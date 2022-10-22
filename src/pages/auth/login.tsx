@@ -18,7 +18,7 @@ import {
   Title,
   ButtonGoogle,
   ErrorBox,
-} from "./auth.styles";
+} from "../../styles/auth.styles";
 
 
 type UserSubmitForm = {
