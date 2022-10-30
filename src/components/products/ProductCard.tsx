@@ -1,7 +1,8 @@
 import { addToCart } from '@/redux/cart.slice';
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { ProductContainer,ImgCard, ButtonCard, NameCard ,PriceCard,InfoBox} from './Products.styles'
+import { ProductContainer, ButtonCard, NameCard ,PriceCard,InfoBox, ImgCard} from './Products.styles'
+import Image from 'next/image'
 
 
 
@@ -12,7 +13,10 @@ const ProductCard: React.FC<any> = ({ productItem}:any) => {
 
   return (
     <ProductContainer>
-        <ImgCard src={productItem.image} alt={productItem.name}/>
+      <ImgCard>
+      <Image src={productItem.image} alt={productItem.name} width={280} height={280}/>
+      </ImgCard>
+      
         <InfoBox>
           <NameCard>{productItem.name}</NameCard>
         <PriceCard>${productItem.price}</PriceCard>

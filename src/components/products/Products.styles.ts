@@ -24,8 +24,11 @@ export const ProductContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
-export const ImgCard = styled.img`
-  max-width: 300px;
+export const ImgCard = styled.div`
+overflow: hidden;
+  width: 280px;
+  height: 280px;
+  position: relative;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 10px;
   border-radius: 25px;
